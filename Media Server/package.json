@@ -1,0 +1,9 @@
+{
+  "name": "media-server",
+  "version": "0.0.0",
+  "description": "Media Server",
+  "main": "server.js",
+  "author": {
+    "name": "marku"
+  }
+}
