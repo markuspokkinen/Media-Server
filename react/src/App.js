@@ -1,36 +1,35 @@
 ﻿import React, { Component } from 'react';
-import ListData from './ListData.js';
+import Dev from './DevPostCombiner';
+import Items from './GetItems';
 
 export default class App extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			Data: []
+			dev: true
 		};
 	}
+
 	handleClick(event) {
-		fetch("/read/" + event.target.id).then((result) => {
-			return result.text();
-
-		}).then((response) => {
-			console.log(response);
-			this.setState({ Data: lines });
-		}).catch((error) => {
-			console.log(error);
-
-		});
+		if (this.state.dev) {
+			this.setState({ dev: false });
+		} else {
+			this.setState({ dev: true });
+		}
 	}
 
 	render() {
-		console.log(this.state);
+		var rend;
+		if (this.state.dev) {
+			rend = <Dev />;
+		} else {
+			rend = <Items />;
+		}
 		return (
-			<div >
-				<button id="FDr" onClick={this.handleClick.bind(this)}>F Drive</button>
-				<button />
-				<button />
-
-				<ul id="data"><ListData dat={this.state.Data} /></ul>
+			<div style={{ backgroundColor: 'rgb(88, 88, 88)' }}>
+				<button onClick={this.handleClick.bind(this)}>Turn Dev on and off</button>
+				{rend}
 			</div>
 		);
 	}
