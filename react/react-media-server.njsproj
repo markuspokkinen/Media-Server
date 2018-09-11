@@ -37,6 +37,8 @@
     <Folder Include="build\static\media\" />
     <Folder Include="public\" />
     <Folder Include="src\" />
+    <Folder Include="src\Dev\" />
+    <Folder Include="src\Dev\classes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="build\asset-manifest.json">
@@ -65,10 +67,22 @@
     <Compile Include="build\service-worker.js" />
     <Compile Include="build\static\js\main.61911c33.js" />
     <Compile Include="src\App.js" />
-    <Compile Include="src\DevLeftDiv.js">
+    <Compile Include="src\Dev\classes\DevMovies.js">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="src\DevPostCombiner.js">
+    <Compile Include="src\Dev\classes\DevMusic.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\Dev\classes\DevTV.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\Dev\DevLeftDiv.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\Dev\DevList.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\Dev\DevPostCombiner.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="src\GetItems.js">

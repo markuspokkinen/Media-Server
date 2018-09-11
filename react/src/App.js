@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-import Dev from './DevPostCombiner';
+import Dev from './Dev/DevPostCombiner';
 import Items from './GetItems';
 
 export default class App extends Component {
@@ -7,7 +7,7 @@ export default class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			dev: true
+			dev: false
 		};
 	}
 

@@ -30,6 +30,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="build\service-worker.js" />
+    <Compile Include="build\static\js\main.06ef2141.js" />
+    <Compile Include="build\static\js\main.0ffce8a5.js" />
+    <Compile Include="build\static\js\main.61911c33.js" />
+    <Compile Include="build\static\js\main.9b9b7127.js" />
     <Compile Include="Dev.js">
       <SubType>Code</SubType>
     </Compile>
@@ -47,6 +51,13 @@
     <Content Include="build\favicon.ico" />
     <Content Include="build\index.html" />
     <Content Include="build\manifest.json" />
+    <Content Include="build\static\css\main.c17080f1.css" />
+    <Content Include="build\static\css\main.c17080f1.css.map" />
+    <Content Include="build\static\js\main.06ef2141.js.map" />
+    <Content Include="build\static\js\main.0ffce8a5.js.map" />
+    <Content Include="build\static\js\main.61911c33.js.map" />
+    <Content Include="build\static\js\main.9b9b7127.js.map" />
+    <Content Include="build\static\media\logo.5d5d9eef.svg" />
     <Content Include="Data\EDr.txt" />
     <Content Include="Data\FDr.txt" />
     <Content Include="Data\HDr.txt" />
