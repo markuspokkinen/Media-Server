@@ -12,19 +12,14 @@ export default class DevPostCombiner extends Component {
 		};
 	}
 	handleClick(event) {
-		fetch("/dev/" + event.target.id).then((result) => {
-			return result.json();
-		}).then((response) => {
-			console.log(response);
-			this.setState({ Data: response });
-
-		}).catch((error) => {
-			console.log(error);
-
+		fetch("/dev/" + event.target.id).then((res) => res.text()).then(response => {
+			var lines = response.split("\r\n");
+			console.log(lines);
+			this.setState({ Data: lines });
 		});
 	}
 	callback = (data) => {
-		console.log(data);
+		//console.log(data);
 		this.setState({ Arr: data });
 		
 	}

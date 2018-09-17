@@ -34,6 +34,7 @@
     <Compile Include="build\static\js\main.0ffce8a5.js" />
     <Compile Include="build\static\js\main.61911c33.js" />
     <Compile Include="build\static\js\main.9b9b7127.js" />
+    <Compile Include="build\static\js\main.fa668a89.js" />
     <Compile Include="Dev.js">
       <SubType>Code</SubType>
     </Compile>
@@ -57,6 +58,7 @@
     <Content Include="build\static\js\main.0ffce8a5.js.map" />
     <Content Include="build\static\js\main.61911c33.js.map" />
     <Content Include="build\static\js\main.9b9b7127.js.map" />
+    <Content Include="build\static\js\main.fa668a89.js.map" />
     <Content Include="build\static\media\logo.5d5d9eef.svg" />
     <Content Include="Data\EDr.txt" />
     <Content Include="Data\FDr.txt" />
