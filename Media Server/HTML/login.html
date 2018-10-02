@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+	<title>Login</title>
+</head>
+<body>
+	<button onclick="location.href = '/NewUser'" >New User</button>
+	<form method="post" action="/login">
+		<input name="User[Email]" required placeholder="Email" type="text" />
+		<br />
+		<input name="User[Password]" required placeholder="Password" type="password" />
+		<br />
+		<input value="Sign In" type="submit" />
+	</form>
+</body>
+</html>
