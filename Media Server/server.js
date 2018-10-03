@@ -12,6 +12,7 @@ const music = require("./Music");
 const login = require("./login");
 const newUser = require("./NewUser");
 const profiles = require("./Profiles");
+const home = require("./Home");
 
 
 const port = process.env.PORT || 8080;
@@ -41,7 +42,7 @@ app.use("/Music", music);
 app.use("/Login", login);
 app.use("/NewUser", newUser);
 app.use("/Profiles", profiles);
-
+app.use("/Home", home);
 
 app.listen(port);
 console.log("Server running in port: " + port);

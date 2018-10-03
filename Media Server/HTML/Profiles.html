@@ -23,11 +23,21 @@
 					console.log(json);
 					var divprof = document.getElementById("profIDS");
 					json.forEach(elem => {
+						var form = document.createElement('form');
+						form.method = "post";
+						form.action = "/Home";
 
-						var button = document.createElement("button");
-						button.innerHTML = elem.name;
-						button.id = elem.id;
-						divprof.appendChild(button);
+						var input = document.createElement("input");
+						input.type = "submit";
+						input.value = elem.name;
+						form.appendChild(input);
+
+						var hidinput = document.createElement('input');
+						hidinput.type = "hidden";
+						hidinput.value = elem.id;
+						hidinput.name = "profileID";
+						form.appendChild(hidinput);
+						divprof.appendChild(form);
 					});
 				}
 			}

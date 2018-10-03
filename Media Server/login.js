@@ -9,6 +9,9 @@ const { check, validationResult } = require('express-validator/check');
 const app = express();
 
 app.route("/").get((req, res) => {
+	if (req.session.userId && req.session.profID) {
+		res.redirect("/Home");
+	}
 	if (req.session.userId) {
 		res.redirect("/profiles");
 	} else {
