@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<title>Profiles</title>
+</head>
+<body>
+	<button onclick="location.href='/Login/Out'" >Log Out</button>
+	<form method="post" action="/Profiles">
+		<input type="text" name="profileName" required placeholder="New Profile Name" />
+		<br />
+		<input value="Add New Profile" type="submit" />
+		<div id="profIDS"></div>
+	</form>
+
+	<script>
+		window.onload = function () {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) {
+					var json = JSON.parse(this.responseText);
+					console.log(json);
+					var divprof = document.getElementById("profIDS");
+					json.forEach(elem => {
+
+						var button = document.createElement("button");
+						button.innerHTML = elem.name;
+						button.id = elem.id;
+						divprof.appendChild(button);
+					});
+				}
+			}
+			xhttp.open("GET", "/Profiles/all", true);
+			xhttp.send();
+		}
+	</script>
+</body>
+</html>

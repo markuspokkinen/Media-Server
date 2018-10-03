@@ -29,19 +29,22 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="build\service-worker.js" />
-    <Compile Include="build\static\js\main.06ef2141.js" />
-    <Compile Include="build\static\js\main.0ffce8a5.js" />
-    <Compile Include="build\static\js\main.61911c33.js" />
-    <Compile Include="build\static\js\main.9b9b7127.js" />
-    <Compile Include="build\static\js\main.fa668a89.js" />
     <Compile Include="Dev.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Home.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="login.js">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MongoConnection.js">
+    <Compile Include="Mongo\MongoCon.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mongo\MongoLogin.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mongo\MongoProfile.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Movies.js">
@@ -53,42 +56,35 @@
     <Compile Include="NewUser.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Profiles.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="server.js" />
     <Compile Include="TVSeries.js">
       <SubType>Code</SubType>
     </Compile>
-    <Content Include="build\asset-manifest.json" />
-    <Content Include="build\favicon.ico" />
-    <Content Include="build\index.html" />
-    <Content Include="build\manifest.json" />
-    <Content Include="build\static\css\main.c17080f1.css" />
-    <Content Include="build\static\css\main.c17080f1.css.map" />
-    <Content Include="build\static\js\main.06ef2141.js.map" />
-    <Content Include="build\static\js\main.0ffce8a5.js.map" />
-    <Content Include="build\static\js\main.61911c33.js.map" />
-    <Content Include="build\static\js\main.9b9b7127.js.map" />
-    <Content Include="build\static\js\main.fa668a89.js.map" />
-    <Content Include="build\static\media\logo.5d5d9eef.svg" />
     <Content Include="Data\EDr.txt" />
     <Content Include="Data\FDr.txt" />
     <Content Include="Data\HDr.txt" />
+    <Content Include="HTML\Home.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="HTML\login.html">
       <SubType>Code</SubType>
     </Content>
     <Content Include="HTML\newuser.html">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="HTML\Profiles.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="package.json" />
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="build\" />
-    <Folder Include="build\static\" />
-    <Folder Include="build\static\css\" />
-    <Folder Include="build\static\js\" />
-    <Folder Include="build\static\media\" />
     <Folder Include="Data\" />
     <Folder Include="HTML\" />
+    <Folder Include="Mongo\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
