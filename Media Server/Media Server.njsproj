@@ -32,7 +32,16 @@
     <Compile Include="Dev.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ExternalAPI\APIConn.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Home.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HTML\HomeFront.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HTML\LoginFront.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="login.js">
@@ -44,7 +53,13 @@
     <Compile Include="Mongo\MongoLogin.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Mongo\MongoMovies.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Mongo\MongoProfile.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mongo\MongoTV.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Movies.js">
@@ -85,6 +100,7 @@
     <Folder Include="Data\" />
     <Folder Include="HTML\" />
     <Folder Include="Mongo\" />
+    <Folder Include="ExternalAPI\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />

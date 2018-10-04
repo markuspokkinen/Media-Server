@@ -75,6 +75,7 @@ app.post("/", function (req, res) {
 		database.close();
 	});
 });
+
 function newShow(collec) {
 
 	collec.findOneAndUpdate(

@@ -1,11 +1,23 @@
 ﻿'use strict';
 const express = require('express');
+const api = require("./ExternalAPI/APIConn");
+
 const fs = require('fs');
 
 const app = express();
 
-const MongoClient = require('mongodb').MongoClient;
-const MONGO_URL = ' mongodb://MaVide:MaVide2018@ds145562.mlab.com:45562/videokanta';
+app.route("/").get((req, res) => {
 
+}).post((req, res) => {
+		
+	});
+app.get("/query/:search", (req, res) => {
+	var query = req.params.search;
+
+	api.searchMovie(query).then(result => {
+		res.send(result);
+		//console.log(result);
+	});
+});
 
 module.exports = app;

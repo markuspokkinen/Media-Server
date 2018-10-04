@@ -9,11 +9,13 @@ const { check, validationResult } = require('express-validator/check');
 const app = express();
 
 app.route("/").get((req, res) => {
-	if (req.session.userId && req.session.profID) {
+	if ((req.session.userId && req.session.profID) || (req.cookies.userID && req.cookies.profID)) {
 		res.redirect("/Home");
+		return;
 	}
 	if (req.session.userId) {
 		res.redirect("/profiles");
+		return;
 	} else {
 		res.sendFile(__dirname + "/HTML/login.html");
 	}
@@ -25,7 +27,7 @@ app.route("/").get((req, res) => {
 			//console.log(req.session.userId);
 			res.redirect("/profiles");
 		} else {
-			res.stus(422).json({error:"Email or Password was wrong"});
+			res.status(422).json({error:"Email or Password was wrong"});
 		}
 
 	}).catch(err => {

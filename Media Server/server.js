@@ -26,7 +26,10 @@ app.use(cookieParser());
 app.use(session({
 	secret: "here we go using sessions",
 	resave: false,
-	saveUninitialized: true
+	saveUninitialized: true,
+	cookie: {
+		expires: 600000
+	}
 }));
 
 
