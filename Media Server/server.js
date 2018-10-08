@@ -6,9 +6,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
 const dev = require("./Dev");
-const tv = require("./TVSeries");
-const movies = require("./Movies");
-const music = require("./Music");
+
 const login = require("./login");
 const newUser = require("./NewUser");
 const profiles = require("./Profiles");
@@ -28,7 +26,7 @@ app.use(session({
 	resave: false,
 	saveUninitialized: true,
 	cookie: {
-		expires: 600000
+		expires: 3600
 	}
 }));
 
@@ -36,12 +34,9 @@ app.use(session({
 app.use(express.static(__dirname + "/HTML"));
 
 app.get("/", function (req, res, next) {
-	res.redirect("/login");
+	res.redirect("/Login");
 });
 app.use("/Dev", dev);
-app.use("/TVseries", tv);
-app.use("/Movies", movies);
-app.use("/Music", music);
 app.use("/Login", login);
 app.use("/NewUser", newUser);
 app.use("/Profiles", profiles);

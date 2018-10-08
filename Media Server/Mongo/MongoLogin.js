@@ -30,7 +30,7 @@ mongo.newLogin = function (Useremail, UserPassword) {
 				if (err) throw err;
 				if (data.length === 0) {
 					//add new User
-					colle.updateOne({ Email: Useremail }, { $set: { Email: Useremail, Password: UserPassword } }, { upsert: true });
+					colle.updateOne({ Email: Useremail }, { $set: { Email: Useremail, Password: UserPassword } }, { upsert: true })
 					resolve("Success");
 				} else {
 					reject("User Already exits");
