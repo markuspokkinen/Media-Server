@@ -8,14 +8,14 @@ mongo.connect = function (type, collection) {
 	return  new Promise(function (resolve, reject) {
 		if (type === "GET") {
 			MongoClient.connect(MONGO_URL_GET, { useNewUrlParser: true }, function (err, client) {
-				if (err) throw err;
+				if (err) reject(err);
 				const db = client.db(dbName);
 				const collec = db.collection(collection);
 				resolve(collec);
 			});
 		} if (type === "POST") {
 			MongoClient.connect(MONGO_URL_POST, { useNewUrlParser: true }, function (err, client) {
-				if (err) throw err;
+				if (err) reject(err);
 				const db = client.db(dbName);
 				const collec = db.collection(collection);
 				resolve(collec);

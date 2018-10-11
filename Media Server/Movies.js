@@ -1,17 +1,14 @@
 ﻿'use strict';
-const express = require('express');
+const express = require('express').Router();
 const api = require("./ExternalAPI/APIConn");
 const mongo = require("./Mongo/MongoMovies");
 const session = require('express-session');
 
 const fs = require('fs');
 
-const app = express();
-
+const app = express;
 app.route("/").get((req, res) => {
-	mongo.getAllMovies().then(data => {
-		res.send(data);
-	});
+	res.sendFile(__dirname + "/HTML/Movie.html");
 }).post((req, res) => {
 	//console.log(req.body.movID);
 	api.OneMovie(req.body.movID).then(result => {
@@ -35,6 +32,12 @@ app.route("/").get((req, res) => {
 	});
 
 });
+
+app.get("/all", (req, res) => {
+	mongo.getAllMovies().then(data => {
+		res.send(data);
+	}).catch(e => { res.send(e); });
+});
 app.get("/query/:search", (req, res) => {
 	var query = req.params.search;
 
@@ -45,11 +48,11 @@ app.get("/query/:search", (req, res) => {
 });
 app.get("/:id", (req, res) => {
 	let id = req.params.id;
-	mongo.getMovie(id).then(data => {
-		req.send(data);
-	}).catch(data => {
-		req.send(data);
-	})
+	//req.session.movID = id;
+	mongo.getMovie(id).then(data => { res.send(data); })
+		.catch(e => { res.send(e); });
+
 });
+
 
 module.exports = app;

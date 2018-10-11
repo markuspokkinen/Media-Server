@@ -37,7 +37,7 @@ mongo.removeProfile = function (profid) {
 	return new Promise((resolve, reject) => {
 		MongoCon.connect("POST", table).then(collec => {
 			//console.log("Remove conn");
-			collec.deleteOne({ _id: bjectId(profid)}).then(res => {
+			collec.deleteOne({ _id: ObjectId(profid)}).then(res => {
 				console.log("resolve");
 				resolve(res);
 

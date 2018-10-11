@@ -55,13 +55,16 @@ function getData(root) {
 			console.log(json);
 			json.forEach(ent => {
 				var p = document.createElement("p");
-				p.innerHTML = ent.Title + " (" + ent.ReleseDate + ")";
+				var a = document.createElement("a");
+				a.setAttribute("href", "Movies/" + ent._id);
+				a.innerHTML = ent.Title + " (" + ent.ReleseDate + ")";
+				p.appendChild(a);
 				root.appendChild(p);
 			});
 	
 
 		}
 	};
-	xhttp.open("GET", "Home/Movies/", true);
+	xhttp.open("GET", "Movies/all", true);
 	xhttp.send();
 };

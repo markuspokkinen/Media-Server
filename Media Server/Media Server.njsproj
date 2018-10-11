@@ -29,6 +29,9 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Comments.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Dev.js">
       <SubType>Code</SubType>
     </Compile>
@@ -39,7 +42,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="HTML\js\HomeFront.js" />
-    <Compile Include="HTML\js\MovieFrontjs.js">
+    <Compile Include="HTML\js\MovieFront.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="HTML\js\ProfilesFront.js" />
