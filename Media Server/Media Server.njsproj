@@ -38,12 +38,11 @@
     <Compile Include="Home.js">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="HTML\HomeFront.js">
+    <Compile Include="HTML\js\HomeFront.js" />
+    <Compile Include="HTML\js\MovieFrontjs.js">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="HTML\LoginFront.js">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="HTML\js\ProfilesFront.js" />
     <Compile Include="login.js">
       <SubType>Code</SubType>
     </Compile>
@@ -87,6 +86,9 @@
     <Content Include="HTML\login.html">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="HTML\Movie.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="HTML\newuser.html">
       <SubType>Code</SubType>
     </Content>
@@ -99,6 +101,7 @@
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="HTML\" />
+    <Folder Include="HTML\js\" />
     <Folder Include="Mongo\" />
     <Folder Include="ExternalAPI\" />
   </ItemGroup>

@@ -9,6 +9,15 @@
 	<button onclick="location.href='/Login/Out'">Log Out</button>
 	<button onclick="location.href='/Profiles'">Change Profile</button>
 	<p>Home Page</p>
+	<form autocomplete="off" method="post" action="/Movies">
+		<p>Name: <input id="movieSearchBar" type="text" list="movielist" placeholder="Movie Name" /></p>
+		<input type="hidden" id="moviehidID" name="movID" />
+		<p>Release Date: <input id="movieRelease" type="text" /></p>
+		<p>Movie Desc: <textarea id="movieDesc"></textarea></p>
+		<datalist id="movielist"></datalist>
+		<input type="submit" value="Add Movie to Database"/>
+
+	</form>
 	<div id="root"></div>
 	
 	<script src="js/HomeFront.js"></script>

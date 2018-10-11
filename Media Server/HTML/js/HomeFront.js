@@ -1,52 +1,18 @@
 ﻿window.onload = () => {
 	const root = document.getElementById("root");
 	
-	formNewMovie(root);
+	formNewMovie();
 	getData(root);
 };
-function formNewMovie(root) {
-
-	var movieForm = document.createElement("form");
-	movieForm.setAttribute("autocomplete", "off");
-	movieForm.setAttribute("method", "POST");
-	movieForm.setAttribute("action", "/Home/Movies");
-
-	var pSB = document.createElement("p");
-	var searchBar = document.createElement("input");
-	searchBar.setAttribute("list", "movielist");
-	searchBar.placeholder = "Movie Name";
-	pSB.innerHTML = "Name: ";
-	pSB.appendChild(searchBar);
-	movieForm.appendChild(pSB);
-
-	var hidInp = document.createElement("input");
-	hidInp.setAttribute("type", "hidden");
-	hidInp.setAttribute("name", "movID");
-	movieForm.appendChild(hidInp);
-
-	var release = document.createElement("input");
-	var pR = document.createElement("p");
-	pR.innerHTML = "Release Date: ";
-	pR.appendChild(release);
-	movieForm.appendChild(pR);
-
-	var desc = document.createElement("textarea");
-	var pDe = document.createElement("p");
-	pDe.innerHTML = "Movie Desc";
-	pDe.appendChild(desc);
-	movieForm.appendChild(pDe);
-
-	var movielist = document.createElement("datalist");
-	movielist.id = "movielist";
-	movieForm.appendChild(movielist);
-
-	var subbutton = document.createElement("input");
-	subbutton.setAttribute("type", "submit");
-	subbutton.innerHTML = "Add Movie to DataBase";
-	movieForm.appendChild(subbutton);
-
+function formNewMovie() {
+	var searchBar = document.getElementById("movieSearchBar");
+	var movielist = document.getElementById("movielist");
+	var release = document.getElementById("movieRelease");
+	var desc = document.getElementById("movieDesc");
+	var hidInp = document.getElementById("moviehidID");
 
 	searchBar.addEventListener("keyup", () => {
+		var searchval = searchBar.value.split(" (")[0];
 
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function () {
@@ -60,11 +26,11 @@ function formNewMovie(root) {
 
 					var option = document.createElement("option");
 					option.setAttribute("id", dat.id);
-					option.value = dat.title;
-					if (searchBar.value === dat.title) {
+					var optval = dat.title + " ( " + dat.release_date + " )";
+					option.value = optval;
+					if (searchBar.value === optval) {
 						release.value = dat.release_date;
 						desc.value = dat.overview;
-						option.selected = true;
 						hidInp.value = dat.id;
 					}
 					//console.log(option.selected);
@@ -74,10 +40,9 @@ function formNewMovie(root) {
 			}
 
 		};
-		xhttp.open("GET", "Home/Movies/query/" + searchBar.value, true);
+		xhttp.open("GET", "/Movies/query/" + searchval, true);
 		xhttp.send();
 	});
-	root.appendChild(movieForm);
 }
 function getData(root) {
 	var moviep = document.createElement("p");

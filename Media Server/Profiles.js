@@ -13,10 +13,26 @@ app.route("/").get((req, res) => {
 		res.redirect("/Login");
 	}
 }).post((req, res) => {
-	//add profile
+	//login profile
+	req.session.profID = req.body.profileID;
+	res.redirect("/Home");
+	});
+
+app.post("/new", (req, res) => {
+	
 	const name = req.body.profileName;
+	console.log(name);
+	console.log(req.session.userId);
 	mongo.addProfile(req.session.userId, name).then(data => {
 		res.redirect("/Profiles");
+	});
+});
+app.delete("/:id", (req, res) => {
+	var profID = req.params.id;
+	mongo.removeProfile(profID).then(resolve => {
+		res.json(resolve);
+	}).catch(rej => {
+		res.json(rej);
 	});
 });
 

@@ -6,14 +6,16 @@
 	<title>Profiles</title>
 </head>
 <body>
-	<button onclick="location.href='/Login/Out'" >Log Out</button>
-	<form method="post" action="/Profiles">
+	<button onclick="location.href='/Login/Out'">Log Out</button>
+
+	<form method="post" action="/Profiles/new">
 		<input type="text" name="profileName" required placeholder="New Profile Name" />
 		<br />
 		<input value="Add New Profile" type="submit" />
-		<div id="profIDS"></div>
 	</form>
 
-	<script src="js/LoginFront.js"></script>
+	<div id="profIDS"></div>
+
+	<script src="js/profilesFront.js"></script>
 </body>
 </html>

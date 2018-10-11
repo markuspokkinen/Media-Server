@@ -1,13 +1,11 @@
 ﻿const MongoClient = require('mongodb').MongoClient;
-const ObjectID = require('mongodb').ObjectId;
 
 const MONGO_URL_POST = 'mongodb://MaVidePost:MaVidePost2018@ds145562.mlab.com:45562/videokanta';
 const MONGO_URL_GET = 'mongodb://MaVide:MaVide2018@ds145562.mlab.com:45562/videokanta';
 const dbName = "videokanta";
 var mongo = {};
-
 mongo.connect = function (type, collection) {
-	var connection = new Promise(function (resolve, reject) {
+	return  new Promise(function (resolve, reject) {
 		if (type === "GET") {
 			MongoClient.connect(MONGO_URL_GET, { useNewUrlParser: true }, function (err, client) {
 				if (err) throw err;
@@ -24,6 +22,5 @@ mongo.connect = function (type, collection) {
 			});
 		}
 	});
-	return connection;
 };
 module.exports = mongo;

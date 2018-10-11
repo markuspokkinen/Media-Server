@@ -1,4 +1,5 @@
 ﻿const MongoCon = require('./MongoCon');
+const ObjectId = require('mongodb').ObjectId;
 const table = "Profiles";
 var mongo = {};
 
@@ -18,6 +19,7 @@ mongo.getProfiles = function (userId) {
 	});
 	return profiles;
 };
+
 mongo.addProfile = function (userID, profilename) {
 	var add = new Promise((resolve, reject) => {
 		MongoCon.connect("POST", table).then(collec => {
@@ -29,6 +31,21 @@ mongo.addProfile = function (userID, profilename) {
 		});
 	});
 	return add;
+};
+mongo.removeProfile = function (profid) {
+	//console.log("remove");
+	return new Promise((resolve, reject) => {
+		MongoCon.connect("POST", table).then(collec => {
+			//console.log("Remove conn");
+			collec.deleteOne({ _id: bjectId(profid)}).then(res => {
+				console.log("resolve");
+				resolve(res);
+
+			}).catch(e => {
+				reject(e);
+			});
+		});
+	});
 };
 
 module.exports = mongo;

@@ -2,6 +2,7 @@
 const express = require('express');
 const api = require("./ExternalAPI/APIConn");
 const mongo = require("./Mongo/MongoMovies");
+const session = require('express-session');
 
 const fs = require('fs');
 
@@ -17,6 +18,8 @@ app.route("/").get((req, res) => {
 		var data = {};
 		var genrs = [];
 		//console.log(result);
+		data.userId = req.session.userId;
+		data.profileId = req.session.profileId;
 		data.id = result.id;
 		data.Title = result.title;
 		result.genres.forEach(dat => {
@@ -39,6 +42,14 @@ app.get("/query/:search", (req, res) => {
 		res.send(result);
 		//console.log(result);
 	});
+});
+app.get("/:id", (req, res) => {
+	let id = req.params.id;
+	mongo.getMovie(id).then(data => {
+		req.send(data);
+	}).catch(data => {
+		req.send(data);
+	})
 });
 
 module.exports = app;

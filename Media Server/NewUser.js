@@ -24,7 +24,7 @@ app.route("/").get((req, res) => {
 		res.redirect("/login");
 	}).catch(err => {
 		console.log(err);
-		res.staus(422).json({errors:err});
+		res.json({errors:err});
 	});
 });
 module.exports = app;
