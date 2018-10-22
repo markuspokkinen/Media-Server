@@ -10,9 +10,10 @@ app.route("/").get((req, res) => {
 	res.sendFile(__dirname + "/HTML/newuser.html");
 
 }).post([
-	check('User[Email]').isEmail(),
-	check('User[Password]').isLength({ min: 7 })
-], (req, res) => {
+	check('User.Email').isEmail(),
+	check('User.Password').isLength({ min: 7 })
+	], (req, res) => {
+		console.log(req.body);
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
 		return res.status(422).json({ errors: errors.array() });
@@ -21,10 +22,10 @@ app.route("/").get((req, res) => {
 	const password = req.body.User.Password;
 	mongo.newLogin(email, password).then(loginres => {
 		console.log(loginres);
-		res.redirect("/login");
+		res.json({ body: loginres });
 	}).catch(err => {
 		console.log(err);
-		res.json({errors:err});
+		res.json({ body:err});
 	});
 });
 module.exports = app;

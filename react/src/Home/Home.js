@@ -2,7 +2,7 @@
 
 export default class Home extends Component {
 	constructor(props) {
-
+		super(props);
 	}
 
 	handleClick(event) {
@@ -15,7 +15,7 @@ export default class Home extends Component {
 	render() {
 		return (
 			<div>
-				<div id="Movies"></div>
+				<p>Home Page</p>
 			</div>
 			);
 	}

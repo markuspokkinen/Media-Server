@@ -8,35 +8,29 @@ const { check, validationResult } = require('express-validator/check');
 
 const app = express();
 
-app.route("/").get((req, res) => {
-	if ((req.session.userId && req.session.profID) || (req.cookies.userId && req.cookies.profID)) {
-		res.redirect("/Home");
-	}
-	if (req.session.userId) {
-		res.redirect("/profiles");
-	} else {
-		res.sendFile(__dirname + "/HTML/login.html");
-		//res.render("login");
-	}
-}).post((req, res) => {
+app.post("/",(req, res) => {
+	//console.log(req.body);
 	mongo.Login(req.body.User.Email).then(data => {
-		//console.log(data);
+		console.log(data);
 		if (req.body.User.Password === data.Password) {
 			req.session.userId = data._id;
+			req.session.cookie.userId = data._id;
 			//console.log(req.session.userId);
-			res.redirect("/profiles");
+			console.log("success");
+			res.json({user: true});
 		} else {
-			res.status(422).json({error:"Email or Password was wrong"});
+			res.json("Email or Password was wrong");
 		}
 
 	}).catch(err => {
 		console.log(err);
 		res.send(err);
 	});
-	});
+});
 
 app.get("/Out", (req, res) => {
+	console.log("logged out");
 	req.session.destroy();
-	res.redirect("/Login");
+	res.json({body: "loged"});
 });
 module.exports = app;

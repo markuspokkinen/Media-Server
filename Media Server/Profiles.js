@@ -15,16 +15,17 @@ app.route("/").get((req, res) => {
 }).post((req, res) => {
 	//login profile
 	req.session.profID = req.body.profileID;
-	res.redirect("/Home");
+	req.session.cookie.profID = req.body.profileID;
+	res.json({body:"profile chosen"});
 	});
 
 app.post("/new", (req, res) => {
-	
+	console.log(req.body);
 	const name = req.body.profileName;
 	console.log(name);
 	console.log(req.session.userId);
 	mongo.addProfile(req.session.userId, name).then(data => {
-		res.redirect("/Profiles");
+		res.json({ body: data });
 	});
 });
 app.delete("/:id", (req, res) => {
@@ -37,13 +38,14 @@ app.delete("/:id", (req, res) => {
 });
 
 app.get("/all", (req, res) => {
+	//console.log(req.session.userId);
 	mongo.getProfiles(req.session.userId).then(profiles => {
 		var retdat = [];
 		profiles.forEach(function (element) {
 			retdat.push({ id: element._id, name: element.ProfileName});
 		});
 		//console.log(retdat);
-		res.send(retdat);
+		res.json(retdat);
 	});
 });
 

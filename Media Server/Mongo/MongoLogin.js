@@ -27,11 +27,12 @@ mongo.newLogin = function (Useremail, UserPassword) {
 	var newuser = new Promise(function (resolve, reject) {
 		MongoCon.connect("POST", table).then((colle) => {
 			colle.find({ Email: Useremail }).toArray(function (err, data) {
-				if (err) throw err;
+				if (err) rejec(err);
 				if (data.length === 0) {
 					//add new User
-					colle.updateOne({ Email: Useremail }, { $set: { Email: Useremail, Password: UserPassword } }, { upsert: true })
-					resolve("Success");
+					colle.updateOne({ Email: Useremail }, { $set: { Email: Useremail, Password: UserPassword } }, { upsert: true }).then(upres => {
+						resolve(upres);
+					}).catch(e => reject(e));
 				} else {
 					reject("User Already exits");
 				}

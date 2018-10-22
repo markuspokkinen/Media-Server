@@ -39,6 +39,9 @@
     <Folder Include="src\" />
     <Folder Include="src\Dev\" />
     <Folder Include="src\Dev\classes\" />
+    <Folder Include="src\Home\" />
+    <Folder Include="src\Profile\" />
+    <Folder Include="src\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="build\asset-manifest.json">
@@ -67,6 +70,21 @@
     <Compile Include="build\service-worker.js" />
     <Compile Include="build\static\js\main.61911c33.js" />
     <Compile Include="src\App.js" />
+    <Compile Include="src\Home\AddMovies.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\Home\Movies.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\Profile\CreateProfile.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\Profile\ProfileCombiner.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\User\CreateUser.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="src\Dev\classes\DevMovies.js">
       <SubType>Code</SubType>
     </Compile>
@@ -85,11 +103,17 @@
     <Compile Include="src\Dev\DevPostCombiner.js">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="src\Home.js">
+    <Compile Include="src\Home\Home.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="src\index.js" />
-    <Compile Include="src\login.js">
+    <Compile Include="src\User\login.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\Profile\Profile.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\User\UserCombiner.js">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

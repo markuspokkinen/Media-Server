@@ -29,6 +29,8 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="build\service-worker.js" />
+    <Compile Include="build\static\js\main.2ddcbd51.js" />
     <Compile Include="Comments.js">
       <SubType>Code</SubType>
     </Compile>
@@ -80,6 +82,11 @@
     <Compile Include="TVSeries.js">
       <SubType>Code</SubType>
     </Compile>
+    <Content Include="build\asset-manifest.json" />
+    <Content Include="build\favicon.ico" />
+    <Content Include="build\index.html" />
+    <Content Include="build\manifest.json" />
+    <Content Include="build\static\js\main.2ddcbd51.js.map" />
     <Content Include="Data\EDr.txt" />
     <Content Include="Data\FDr.txt" />
     <Content Include="Data\HDr.txt" />
@@ -102,6 +109,9 @@
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="build\" />
+    <Folder Include="build\static\" />
+    <Folder Include="build\static\js\" />
     <Folder Include="Data\" />
     <Folder Include="HTML\" />
     <Folder Include="HTML\js\" />

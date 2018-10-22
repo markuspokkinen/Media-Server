@@ -22,22 +22,60 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static(__dirname + "/HTML"));
 
+//app.use(express.static(__dirname + "/HTML"));
+app.use(express.static(__dirname + "/build"));
 app.use(cookieParser());
 app.use(session({
 	secret: "local1",
 	resave: true,
 	saveUninitialized: true,
 	cookie: {
-		expires: 60000
+		httpOnly: true,
+		expires: new Date(Date.now() + 604800000),
+		maxAge: 604800000
 	}
 }));
-
-
-app.get("/", function (req, res, next) {
-	res.redirect("/Login");
+app.get("/", (req, res) => {
+	res.sendFile(__dirname + "/build/index.html");
 });
+app.get("/session", (req, res) => {
+	//console.log("Session");
+	//console.log(req.session);
+	//console.log(req.session.userId);
+	//console.log(req.session.profID);
+	//console.log("Cookie");
+	//console.log(req.session.cookie);
+	//console.log(req.session.cookie.userId);
+	//console.log(req.session.cookie.profID);
+	if ((req.session.userId && req.session.profID) || (req.session.cookie.userId && req.session.cookie.profID)) {
+		//console.log("session");
+		req.session.userId = req.session.cookie.userId;
+		req.session.cookie.userId = req.session.userId;
+
+		req.session.profID = req.session.cookie.profID;
+		req.session.cookie.profID = req.session.profID;
+
+		res.json({
+			user: true,
+			profile: true
+		});
+	} else if (req.session.userId || req.session.cookie.userId) {
+		//console.log("non")
+		req.session.userId = req.session.cookie.userId;
+		req.session.cookie.userId = req.session.userId;
+		res.json({
+			user: true,
+			profile: false
+		});
+	} else {
+		res.json({
+			user: false,
+			profile: false
+		});
+	}
+});
+
 //app.use("/Dev", dev);
 app.use("/Login", login);
 app.use("/NewUser", newUser);
