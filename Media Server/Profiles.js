@@ -6,18 +6,12 @@ const session = require('express-session');
 
 const app = express();
 
-app.route("/").get((req, res) => {
-	if (req.session.userId) {
-		res.sendFile(__dirname + "/HTML/Profiles.html");
-	} else {
-		res.redirect("/Login");
-	}
-}).post((req, res) => {
+app.post("/", (req, res) => {
 	//login profile
 	req.session.profID = req.body.profileID;
 	req.session.cookie.profID = req.body.profileID;
-	res.json({body:"profile chosen"});
-	});
+	res.json({ body: "profile chosen" });
+});
 
 app.post("/new", (req, res) => {
 	console.log(req.body);
@@ -28,23 +22,30 @@ app.post("/new", (req, res) => {
 		res.json({ body: data });
 	});
 });
-app.delete("/:id", (req, res) => {
+app.route("/:id").delete((req, res) => {
 	var profID = req.params.id;
 	mongo.removeProfile(profID).then(resolve => {
 		res.json(resolve);
 	}).catch(rej => {
 		res.json(rej);
 	});
+}).get((req, res) => {
+	var profID = req.params.id;
+	mongo.getOneProfile(profID).then(resolved => {
+		res.json(resoled);
+	}).catch(rejected => {
+		res.json(rejected);
+	});
 });
 
 app.get("/all", (req, res) => {
-	//console.log(req.session.userId);
+	console.log(req.session.userId);
 	mongo.getProfiles(req.session.userId).then(profiles => {
 		var retdat = [];
 		profiles.forEach(function (element) {
-			retdat.push({ id: element._id, name: element.ProfileName});
+			retdat.push({ id: element._id, name: element.ProfileName });
 		});
-		//console.log(retdat);
+		console.log(retdat);
 		res.json(retdat);
 	});
 });

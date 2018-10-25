@@ -1,14 +1,29 @@
 ﻿import React, { Component } from 'react';
 
-export default class Movies extends Component {
+import OneMov from './OneMovie';
 
+export default class Movies extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			one: false
+		};
+	}
 
 	render() {
+		let data;
+
+		if (this.state.one) {
+			data = <OneMov />;
+		}
 
 		return (
-			<p>Movies here</p>
-			
-			);
+			<div>
+				
+				<p>All Movies </p>
+				{data}
+			</div>
+		);
 
 
 	}

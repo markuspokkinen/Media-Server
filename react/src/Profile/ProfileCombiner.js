@@ -35,15 +35,20 @@ export default class ProfileCombiner extends Component {
 
 	render() {
 		let newprf;
+		let createtext = "Create new Profile";
 		if (this.state.newprofile) {
 			newprf = <Create addcallback={this.newprofileadded.bind(this)} />;
+			createtext = "Back to Profile Chooser";
 		} else {
+			createtext = "Create new Profile";
 			newprf = "";
 		}
+
+
 		return (
 			<div>
 				<button onClick={this.handlelogOut.bind(this)}>Log Out</button>
-				<button onClick={this.handlenewprofilebutton.bind(this)}>Create new Profile</button>
+				<button onClick={this.handlenewprofilebutton.bind(this)}>{createtext}</button>
 				{newprf}
 				<Chooseprof chosenprofilehandler={this.handlechosenprofile.bind(this)} profiles={this.state.profiles} />
 			</div>

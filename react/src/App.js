@@ -13,10 +13,8 @@ export default class App extends Component {
 		};
 	}
 	componentDidMount() {
-		fetch("/session").then(res => {
-			//console.log(res);
-			return res.json();
-		}).then(json => {
+		fetch("/session").then(res => res.json())
+			.then(json => {
 			//console.log(json);
 			this.setState({
 				user: json.user,
@@ -31,22 +29,22 @@ export default class App extends Component {
 		});
 	}
 	logedinHandler = () => {
-		console.log("app login handler");
+		//console.log("app login handler");
 		this.setState({
 			user: true
 		});
 	}
 	profileinHandler() {
-		console.log("App profilein");
+		//console.log("App profilein");
 		this.setState({
 			profile: true
 		});
 	}
 	render() {
-		console.log(this.state);
+		//console.log(this.state);
 		let data;
 		if ((this.state.user) && (this.state.profile)) {
-			data = <Home />;
+			data = <Home logoutHandler={this.logoutHandler.bind(this)} />;
 		} else if (this.state.user) {
 			data = <Profile logoutHandler={this.logoutHandler.bind(this)} logprofilein={this.profileinHandler.bind(this)} />;
 

@@ -3,6 +3,9 @@
 export default class CreateUser extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			error:""
+		}
 
 	}
 	submitHandler(e) {
@@ -29,6 +32,9 @@ export default class CreateUser extends Component {
 				this.props.backtologin("User Created");
 			} else {
 				//ei lisätty
+				this.setState({
+					error: json.body
+				});
 			}
 		});
 	}
@@ -36,11 +42,13 @@ export default class CreateUser extends Component {
 	render() {
 		return (
 			<div onSubmit={this.submitHandler.bind(this)}>
+				<p>Sign up page</p>
 				<form method="post" action="/NewUser">
 					<input name="User[Email]" required placeholder="Email" type="text" />
 					<br />
 					<input name="User[Password]" required placeholder="Password 7 charecters" type="password" />
 					<br />
+					<p>{this.state.error}</p>
 					<input value="Create User" type="submit" />
 				</form>
 			</div >

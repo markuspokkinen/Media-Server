@@ -76,6 +76,15 @@
     <Compile Include="src\Home\Movies.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="src\Home\OneMovie.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\Home\Settings.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\Home\Setting_profile.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="src\Profile\CreateProfile.js">
       <SubType>Code</SubType>
     </Compile>

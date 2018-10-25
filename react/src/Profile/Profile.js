@@ -16,9 +16,10 @@ export default class Profile extends Component {
 			});
 		});
 	}
-	componentWillReceiveProps() {
+	componentWillReceiveProps(nextprops) {
+		console.log(nextprops);
 		fetch("Profiles/all").then(res => res.json()).then(json => {
-			console.log(json);
+			//console.log(json);
 			this.setState({
 				profiles: json
 			});
@@ -37,7 +38,7 @@ export default class Profile extends Component {
 			})
 
 		}).then(res => res.json()).then(json => {
-			console.log(json);
+			//console.log(json);
 			this.props.chosenprofilehandler();
 		});
 	}

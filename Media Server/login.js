@@ -11,7 +11,7 @@ const app = express();
 app.post("/",(req, res) => {
 	//console.log(req.body);
 	mongo.Login(req.body.User.Email).then(data => {
-		console.log(data);
+		//console.log(data);
 		if (req.body.User.Password === data.Password) {
 			req.session.userId = data._id;
 			req.session.cookie.userId = data._id;
@@ -23,13 +23,13 @@ app.post("/",(req, res) => {
 		}
 
 	}).catch(err => {
-		console.log(err);
+		//console.log(err);
 		res.send(err);
 	});
 });
 
 app.get("/Out", (req, res) => {
-	console.log("logged out");
+	//console.log("logged out");
 	req.session.destroy();
 	res.json({body: "loged"});
 });

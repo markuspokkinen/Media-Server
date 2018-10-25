@@ -16,9 +16,10 @@ export default class CreateProfile extends Component {
 			})
 
 		}).then(res => res.json()).then(json => {
-			//console.log(json.body);
-			if (json.body.body.ok) {
+			console.log(json.body);
+			if (json.body.ok) {
 				//lisätty
+				console.log("uusi profilli lisätty");
 				this.props.addcallback();
 			} else {
 				//ei lisätty
