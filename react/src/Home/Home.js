@@ -7,7 +7,7 @@ export default class Home extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			settings: false
+			settings: false,
 		};
 	}
 
@@ -39,6 +39,7 @@ export default class Home extends Component {
 
 	render() {
 		let page = "";
+		let adm = "";
 		if (this.state.settings) {
 			//setting valilehti
 			page = <Settings />;
@@ -52,6 +53,7 @@ export default class Home extends Component {
 				<button onClick={this.handlelogOut.bind(this)}>Log Out</button>
 				<button onClick={this.handlesettings.bind(this)}>Settings</button>
 				{page}
+				{adm}
 			</div>
 			);
 	}

@@ -27,11 +27,15 @@ export default class Settings extends Component {
 
 	render() {
 		let prf = this.state.profiles.map((prof) => <button id={prof.id} key={prof.id} onClick={this.handleprofclick.bind(this)} >{prof.name}</button>);
+		let profstt;
+		if (this.state.oneprof !== null) {
+			profstt = <SetProf id={this.state.oneprof} />;
+		}
 		return (
 			<div>
 				<p>Settings page</p>
 				{prf}
-				<SetProf id={this.state.oneprof} />
+				{profstt}
 			</div>
 		);
 

@@ -5,11 +5,13 @@ const apiSearch_url = "https://api.themoviedb.org/3/search/movie/?api_key=d6d6fc
 var api = {};
 
 api.searchMovie = (dat) => {
-	var result = new Promise((resolve, reject) => {
-
+	return new Promise((resolve, reject) => {
+		//console.log(dat);
 		request(apiSearch_url + "&query=" + dat, { json: true },
 			(err, res, body) => {
+				
 				if (!err && res.statusCode === 200) {
+					//console.log(body.results);
 					resolve(body.results);
 				} else {
 					reject(err);
@@ -17,7 +19,6 @@ api.searchMovie = (dat) => {
 			});
 
 	});
-	return result;
 };
 api.OneMovie = (id) => {
 	var res = new Promise((reso, reje) => {

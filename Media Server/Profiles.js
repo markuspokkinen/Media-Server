@@ -23,6 +23,7 @@ app.post("/new", (req, res) => {
 	});
 });
 app.post("/update", (req, res) => {
+	//console.log(req.body);
 	mongo.updateProfile(req.body).then(resolved => {
 		res.json(resolved);
 	}).catch(rejected => {
@@ -47,7 +48,7 @@ app.get("/all", (req, res) => {
 app.route("/:id")
 	.delete((req, res) => {
 		let delID = req.params.id;
-		console.log(delID);
+		//console.log(delID);
 		mongo.removeProfile(delID).then(resolve => {
 			res.json(resolve);
 		}).catch(rej => {

@@ -21,7 +21,7 @@ mongo.getProfiles = function (userId) {
 	});
 };
 mongo.getOneProfile = function (profid) {
-	console.log(profid);
+	//console.log(profid);
 	return new Promise((resolve, reject) => {
 		MongoCon.connect("GET", table).then(collection => {
 			collection.findOne({ _id: ObjectId(profid) }).then(res => {
@@ -36,11 +36,15 @@ mongo.getOneProfile = function (profid) {
 	});
 };
 mongo.updateProfile = function (profile) {
-	return new promise((resolve, reject) => {
+	//console.log(profile);
+	return new Promise((resolve, reject) => {
 		MongoCon.connect("POST", table).then(collection => {
-			collection.updateOne({ _id: ObjectId(profile.id) }, { ProfileName: profile.profilename, Moviefav: profile.Moviefav, TVfav: profile.TVfav }).then(res => {
+			//console.log(collection);
+			collection.updateOne({ _id: ObjectId(profile._id) }, { $set: { ProfileName: profile.ProfileName, Moviefav: profile.Moviefav, TVfav: profile.TVfav, UserID: profile.UserID } }).then(res => {
+				//console.log(res);
 				resolve(res);
 			}).catch(err => {
+				//console.log(err);
 				reject(err);
 			});
 		});

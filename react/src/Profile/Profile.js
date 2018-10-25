@@ -17,7 +17,7 @@ export default class Profile extends Component {
 		});
 	}
 	componentWillReceiveProps(nextprops) {
-		console.log(nextprops);
+		//console.log(nextprops);
 		fetch("Profiles/all").then(res => res.json()).then(json => {
 			//console.log(json);
 			this.setState({
