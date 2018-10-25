@@ -15,18 +15,34 @@ mongo.getProfiles = function (userId) {
 				resolve(data);
 			});
 		}).catch(error => {
+			//console.log(error);
 			reject(error);
 		});
 	});
 };
 mongo.getOneProfile = function (profid) {
+	console.log(profid);
 	return new Promise((resolve, reject) => {
 		MongoCon.connect("GET", table).then(collection => {
-			let doc = collection.findOne({ _id: profid });
-			if (doc) resolve(doc);
-			else reject("error");
+			collection.findOne({ _id: ObjectId(profid) }).then(res => {
+				resolve(res);
+				//console.log(res);
+			}).catch(err => {
+				reject(err);
+			});
 		}).catch(error => {
 			reject(error);
+		});
+	});
+};
+mongo.updateProfile = function (profile) {
+	return new promise((resolve, reject) => {
+		MongoCon.connect("POST", table).then(collection => {
+			collection.updateOne({ _id: ObjectId(profile.id) }, { ProfileName: profile.profilename, Moviefav: profile.Moviefav, TVfav: profile.TVfav }).then(res => {
+				resolve(res);
+			}).catch(err => {
+				reject(err);
+			});
 		});
 	});
 };
@@ -48,7 +64,7 @@ mongo.removeProfile = function (profid) {
 		MongoCon.connect("POST", table).then(collec => {
 			//console.log("Remove conn");
 			collec.deleteOne({ _id: ObjectId(profid) }).then(res => {
-				console.log("resolve");
+				//console.log("resolve");
 				resolve(res);
 
 			}).catch(e => {

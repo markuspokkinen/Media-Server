@@ -31,6 +31,7 @@
   <ItemGroup>
     <Compile Include="build\service-worker.js" />
     <Compile Include="build\static\js\main.2ddcbd51.js" />
+    <Compile Include="build\static\js\main.9f3cb917.js" />
     <Compile Include="Comments.js">
       <SubType>Code</SubType>
     </Compile>
@@ -87,6 +88,7 @@
     <Content Include="build\index.html" />
     <Content Include="build\manifest.json" />
     <Content Include="build\static\js\main.2ddcbd51.js.map" />
+    <Content Include="build\static\js\main.9f3cb917.js.map" />
     <Content Include="Data\EDr.txt" />
     <Content Include="Data\FDr.txt" />
     <Content Include="Data\HDr.txt" />

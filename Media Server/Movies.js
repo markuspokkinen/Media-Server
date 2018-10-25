@@ -1,15 +1,13 @@
 ﻿'use strict';
-const express = require('express').Router();
+const express = require('express');
 const api = require("./ExternalAPI/APIConn");
 const mongo = require("./Mongo/MongoMovies");
 const session = require('express-session');
 
 const fs = require('fs');
 
-const app = express;
-app.route("/").get((req, res) => {
-	res.sendFile(__dirname + "/HTML/Movie.html");
-}).post((req, res) => {
+const app = express();
+app.post("/", (req, res) => {
 	//console.log(req.body.movID);
 	api.OneMovie(req.body.movID).then(result => {
 		var data = {};

@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import SetProf from './Setting_profile';
 
 export default class Settings extends Component {
 	constructor(props) {
@@ -12,7 +13,7 @@ export default class Settings extends Component {
 
 	componentDidMount() {
 		fetch("Profiles/all").then(res => res.json()).then(json => {
-			console.log(json);
+			//console.log(json);
 			this.setState({
 				profiles: json
 			});
@@ -26,14 +27,11 @@ export default class Settings extends Component {
 
 	render() {
 		let prf = this.state.profiles.map((prof) => <button id={prof.id} key={prof.id} onClick={this.handleprofclick.bind(this)} >{prof.name}</button>);
-		if (this.state.oneprof !== null) {
-			console.log();
-			//yksi
-		}
 		return (
 			<div>
 				<p>Settings page</p>
 				{prf}
+				<SetProf id={this.state.oneprof} />
 			</div>
 		);
 

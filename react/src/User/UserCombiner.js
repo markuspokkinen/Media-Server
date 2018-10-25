@@ -37,7 +37,7 @@ export default class UserCombiner extends Component {
 	}
 	logedin = () => {
 		//kirjauduttu sisään
-		console.log("logedin");
+		//console.log("logedin");
 		this.props.logedinHandler();
 	}
 	render() {

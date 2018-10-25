@@ -30,6 +30,11 @@ export default class Home extends Component {
 			settings: !this.state.settings
 		});
 	}
+	handlehomebutton() {
+		this.setState({
+			settings: false
+		});
+	}
 
 
 	render() {
@@ -43,6 +48,7 @@ export default class Home extends Component {
 		}
 		return (
 			<div>
+				<button onClick={this.handlehomebutton.bind(this)}>HOME</button>
 				<button onClick={this.handlelogOut.bind(this)}>Log Out</button>
 				<button onClick={this.handlesettings.bind(this)}>Settings</button>
 				{page}

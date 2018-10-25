@@ -40,30 +40,12 @@ app.get("/", (req, res) => {
 	res.sendFile(__dirname + "/build/index.html");
 });
 app.get("/session", (req, res) => {
-	//console.log("Session");
-	//console.log(req.session);
-	//console.log(req.session.userId);
-	//console.log(req.session.profID);
-	//console.log("Cookie");
-	//console.log(req.session.cookie);
-	//console.log(req.session.cookie.userId);
-	//console.log(req.session.cookie.profID);
-	if ((req.session.userId && req.session.profID) || (req.session.cookie.userId && req.session.cookie.profID)) {
-		//console.log("session");
-		req.session.userId = req.session.cookie.userId;
-		req.session.cookie.userId = req.session.userId;
-
-		req.session.profID = req.session.cookie.profID;
-		req.session.cookie.profID = req.session.profID;
-
+	if (req.session.userId && req.session.profID) {
 		res.json({
 			user: true,
 			profile: true
 		});
-	} else if (req.session.userId || req.session.cookie.userId) {
-		//console.log("non")
-		req.session.userId = req.session.cookie.userId;
-		req.session.cookie.userId = req.session.userId;
+	} else if (req.session.userId) {
 		res.json({
 			user: true,
 			profile: false

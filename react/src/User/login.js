@@ -10,7 +10,7 @@ export default class Login extends Component {
 
 	loginformonsubmit = (event) => {
 		event.preventDefault();
-		console.log(event.target);
+		//console.log(event.target);
 		let email = event.target[0].value;
 		let password = event.target[1].value;
 		//console.log(email);
@@ -31,10 +31,10 @@ export default class Login extends Component {
 		}).then(res => res.json()).then(dat => {
 			console.log(dat);
 			if (dat.user) {
-				console.log(dat.user);
+				//console.log(dat.user);
 				this.props.logincallback();
 			} else {
-				console.log(dat);
+				//console.log(dat);
 				this.setState({
 					error: dat
 				});
