@@ -9,7 +9,6 @@ const session = require('express-session');
 const login = require("./login");
 const newUser = require("./NewUser");
 const profiles = require("./Profiles");
-const home = require("./Home");
 //const tv = require("./TVSeries");
 const movies = require("./Movies");
 //const music = require("./Music");
@@ -62,7 +61,6 @@ app.get("/session", (req, res) => {
 app.use("/Login", login);
 app.use("/NewUser", newUser);
 app.use("/Profiles", profiles);
-app.use("/Home", home);
 //app.use("/TVseries", tv);
 app.use("/Movies", movies);
 //app.use("/Music", music);

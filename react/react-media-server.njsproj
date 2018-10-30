@@ -40,6 +40,7 @@
     <Folder Include="src\Dev\" />
     <Folder Include="src\Dev\classes\" />
     <Folder Include="src\Home\" />
+    <Folder Include="src\Home\Settings\" />
     <Folder Include="src\Profile\" />
     <Folder Include="src\User\" />
   </ItemGroup>
@@ -70,6 +71,9 @@
     <Compile Include="build\service-worker.js" />
     <Compile Include="build\static\js\main.61911c33.js" />
     <Compile Include="src\App.js" />
+    <Compile Include="src\basicStyle.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="src\Home\AddMovies.js">
       <SubType>Code</SubType>
     </Compile>
@@ -79,16 +83,25 @@
     <Compile Include="src\Home\OneMovie.js">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="src\Home\Settings.js">
+    <Compile Include="src\Home\Settings\Settings.js">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="src\Home\Setting_profile.js">
+    <Compile Include="src\Home\Settings\Settings_Movies.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\Home\Settings\Settings_oneprofile.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\Home\Settings\Settings_profile.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="src\Profile\CreateProfile.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="src\Profile\ProfileCombiner.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\Profile\ProfileStyle.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="src\User\CreateUser.js">
@@ -123,6 +136,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="src\User\UserCombiner.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\User\userstyle.js">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

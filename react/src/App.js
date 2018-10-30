@@ -9,18 +9,18 @@ export default class App extends Component {
 		super(props);
 		this.state = {
 			user: false,
-			profile:false
+			profile: false
 		};
 	}
 	componentDidMount() {
 		fetch("/session").then(res => res.json())
 			.then(json => {
-			//console.log(json);
-			this.setState({
-				user: json.user,
-				profile: json.profile
+				//console.log(json);
+				this.setState({
+					user: json.user,
+					profile: json.profile
+				});
 			});
-		});
 	}
 	logoutHandler() {
 		this.setState({
@@ -50,7 +50,6 @@ export default class App extends Component {
 
 		} else {
 			data = <User logedinHandler={this.logedinHandler.bind(this)} />;
-
 		}
 		return (
 			<div>

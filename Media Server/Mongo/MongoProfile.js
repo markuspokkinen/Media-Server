@@ -50,7 +50,48 @@ mongo.updateProfile = function (profile) {
 		});
 	});
 };
+mongo.addmovietofav = function (profid, movid) {
+	return new Promise((resolve, reject) => {
+		MongoCon.connect("POST", table)
+			.then(collection => {
+				collection.find({ _id: ObjectId(profid), Moviefav: parseInt(movid) }).toArray().then(res => {
+					//console.log(res.length);
+					if (res.length === 0) {
+						collection.updateOne({ _id: ObjectId(profid) }, { $push: { Moviefav: parseInt(movid) } }).then(updated => {
+							resolve(updated);
+						});
+					} else {
+						reject("already in favorites");
+					}
 
+				});
+			});
+	});
+};
+mongo.removemoviefromfav = function (profid, movid) {
+	return new Promise((resolve, reject) => {
+		MongoCon.connect("POST", table)
+			.then(collection => {
+				collection.updateOne({ _id: ObjectId(profid) }, { $pull: { Moviefav: parseInt(movid) } }).then(update => {
+					resolve(update);
+				}).catch(err => { reject(err); });
+			});
+	});
+};
+mongo.getFavMovies = function (profid) {
+	return new Promise((resolve, reject) => {
+		MongoCon.connect("GET", table).then(collection => {
+			collection.findOne({ _id: ObjectId(profid) }).then(res => {
+				resolve(res.Moviefav);
+				//console.log(res);
+			}).catch(err => {
+				reject(err);
+			});
+		}).catch(error => {
+			reject(error);
+		});
+	});
+}
 mongo.addProfile = function (userID, profilename) {
 	return new Promise((resolve, reject) => {
 		MongoCon.connect("POST", table).then(collec => {

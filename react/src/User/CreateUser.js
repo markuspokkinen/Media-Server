@@ -1,11 +1,12 @@
 ﻿import React, { Component } from 'react';
+import Style from './userstyle';
 
 export default class CreateUser extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			error:""
-		}
+			error: ""
+		};
 
 	}
 	submitHandler(e) {
@@ -26,33 +27,50 @@ export default class CreateUser extends Component {
 				}
 			})
 		}).then(res => res.json()).then(json => {
-			console.log(json);
-			if (json.body.ok) {
+			//console.log(json);
+			//console.log(json.body.ok);
+			if (json.body.ok !== undefined) {
 				//käyttäjä lisätty
+				//console.log("ok");
 				this.props.backtologin("User Created");
 			} else {
+				console.log(json.body);
+				//console.log("error");
 				//ei lisätty
-				this.setState({
-					error: json.body
-				});
+				if (json.body.length === 2) {
+					this.setState({
+						error: "Invalid Email and Password"
+					});
+				} else if (json.body.length === 1) {
+					console.log(json.body[0].param);
+					if (json.body[0].param === "User.Email") {
+						this.setState({
+							error: "Invalid Email"
+						});
+					} else {
+						this.setState({
+							error: "Invalid Password"
+						});
+					}
+				}
 			}
 		});
 	}
 
 	render() {
 		return (
-			<div onSubmit={this.submitHandler.bind(this)}>
-				<p>Sign up page</p>
-				<form method="post" action="/NewUser">
-					<input name="User[Email]" required placeholder="Email" type="text" />
+			<div style={Style.divstyle}>
+				<form onSubmit={this.submitHandler.bind(this)} style={Style.formstyle}>
+					<h1 style={Style.h1}>CREATE ACCOUNT</h1>
+					<input name="User[Email]" required placeholder="Email" type="text" style={Style.formEmailInputstyle} />
 					<br />
-					<input name="User[Password]" required placeholder="Password 7 charecters" type="password" />
+					<input name="User[Password]" required placeholder="Password 7 charecters" type="password" style={Object.assign({}, Style.formEmailInputstyle, Style.fromPasswordInputstyle)} />
 					<br />
-					<p>{this.state.error}</p>
-					<input value="Create User" type="submit" />
+
+					<input value="Create Account" type="submit" style={Style.subutton} />
+					<p style={Style.p}>{this.state.error}</p>
 				</form>
 			</div >
-
 		);
 
 	}

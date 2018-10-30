@@ -1,6 +1,6 @@
 ﻿import React, { Component } from 'react';
 
-export default class Setting_profile extends Component {
+export default class Setting_oneprofile extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -13,7 +13,6 @@ export default class Setting_profile extends Component {
 
 		};
 	}
-
 	componentDidMount() {
 		console.log(this.props.id);
 		if (this.props.id !== null) {
@@ -96,24 +95,17 @@ export default class Setting_profile extends Component {
 			});
 		}
 	}
-
 	render() {
-		if (this.state.name !== "") {
-			return (
-				<div>
-					<p>Profile Settings</p>
-					<input value={this.state.ProfileName} onChange={this.handlenameChange.bind(this)} />
-					<button id="setprofchang" onClick={this.handlechangecommit.bind(this)}>Change name </button>
-					<button id="setprofrem" onClick={this.handlechangecommit.bind(this)}>Remove profile </button>
-					<p>{this.state.error}</p>
-				</div>
-			);
-		} else {
-			return (
-				<div>
+		return (
+			<div>
+				<p>Profile Settings</p>
+				<input value={this.state.ProfileName} onChange={this.handlenameChange.bind(this)} />
+				<button id="setprofchang" onClick={this.handlechangecommit.bind(this)}>Change name </button>
+				<button id="setprofrem" onClick={this.handlechangecommit.bind(this)}>Remove profile </button>
+				<p>{this.state.error}</p>
+			</div>
+		);
 
-				</div>
-			)
-		}
 	}
+
 }

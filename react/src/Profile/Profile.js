@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import Style from "./ProfileStyle";
 
 export default class Profile extends Component {
 
@@ -10,7 +11,7 @@ export default class Profile extends Component {
 	}
 	componentDidMount() {
 		fetch("Profiles/all").then(res => res.json()).then(json => {
-			console.log(json);
+			//console.log(json);
 			this.setState({
 				profiles: json
 			});
@@ -44,10 +45,11 @@ export default class Profile extends Component {
 	}
 
 	render() {
+
 		//console.log(this.setState.profiles);
-		let prf = this.state.profiles.map((prof) => <button id={prof.id} key={prof.id} onClick={this.profilechoosehandler.bind(this)}>{prof.name}</button>);
+		let prf = this.state.profiles.map((prof) => <div style={{ display: "inline-block" }}><button id={prof.id} key={"but" + prof.id} onClick={this.profilechoosehandler.bind(this)} style={Style.profilestyle} /><p key={"p" + prof.id} style={{ position:"relative", left: "50%" }}>{prof.name}</p></div >);
 		return (
-			<div id="profIDS">
+			<div id="profIDS" style={Style.profileDivStyle}>
 				{prf}
 			</div>
 

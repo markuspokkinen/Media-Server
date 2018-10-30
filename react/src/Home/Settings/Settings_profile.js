@@ -1,46 +1,33 @@
 ﻿import React, { Component } from 'react';
-import SetProf from './Setting_profile';
+import One from './Settings_oneprofile';
+import Style from '../../Profile/ProfileStyle';
 
-export default class Settings extends Component {
+export default class Setting_profile extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			profiles: [],
-			oneprof: null
-
+			profiles:[]
 		};
 	}
 
 	componentDidMount() {
 		fetch("Profiles/all").then(res => res.json()).then(json => {
-			//console.log(json);
 			this.setState({
 				profiles: json
 			});
 		});
 	}
 	handleprofclick(e) {
-		this.setState({
-			oneprof: e.target.id
-		});
+		console.log(e)
 	}
 
 	render() {
 		let prf = this.state.profiles.map((prof) => <button id={prof.id} key={prof.id} onClick={this.handleprofclick.bind(this)} >{prof.name}</button>);
-		let profstt;
-		if (this.state.oneprof !== null) {
-			profstt = <SetProf id={this.state.oneprof} />;
-		}
 		return (
-			<div>
-				<p>Settings page</p>
+			<div style={Style.profileDivStyle}>
+				<h1>Profiles</h1>
 				{prf}
-				{profstt}
 			</div>
 		);
-
-
 	}
-
-
 }

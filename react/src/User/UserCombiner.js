@@ -1,6 +1,8 @@
 ﻿import React, { Component } from 'react';
 import Login from './login';
 import Createuser from './CreateUser';
+import Style from './userstyle';
+import BStyle from '../basicStyle';
 
 export default class UserCombiner extends Component {
 	constructor(props) {
@@ -8,8 +10,8 @@ export default class UserCombiner extends Component {
 		this.state = {
 			newUser: false,
 			logedin: false,
-			newuserbutton: "Sign up",
-			user:""
+			newuserbutton: "Create Account",
+			user: ""
 		};
 
 	}
@@ -24,7 +26,7 @@ export default class UserCombiner extends Component {
 				});
 			} else {
 				this.setState({
-					newuserbutton: "Sign up"
+					newuserbutton: "Create Account"
 				});
 			}
 		});
@@ -32,7 +34,7 @@ export default class UserCombiner extends Component {
 	backtologin = (res) => {
 		this.setState({
 			newUser: false,
-			user:res
+			user: res
 		});
 	}
 	logedin = () => {
@@ -41,17 +43,19 @@ export default class UserCombiner extends Component {
 		this.props.logedinHandler();
 	}
 	render() {
-		let data;
+		let form;
 		if (this.state.newUser) {
-			data = <Createuser backtologin={this.backtologin.bind(this)} />;
+			form = <Createuser backtologin={this.backtologin.bind(this)} />;
 		} else {
-			data = <Login newuserbutton={this.handlenewuser.bind(this)} logincallback={this.logedin.bind(this)} />;
+			form = <Login newuserbutton={this.handlenewuser.bind(this)} logincallback={this.logedin.bind(this)} />;
 		}
 		return (
 			<div>
-				<button onClick={this.handlenewuser}>{this.state.newuserbutton}</button>
-				<p>{this.state.user}</p>
-				{data}
+				<div style={Style.mainbackground}>
+					{form}
+				</div>
+				<p >{this.state.user}</p>
+				<button onClick={this.handlenewuser} style={BStyle.topRight}>{this.state.newuserbutton}</button>
 			</div >
 
 		);

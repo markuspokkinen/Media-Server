@@ -15,28 +15,24 @@ mongo.getAllMovies = () => {
 	});
 };
 mongo.addNewMovie = (data) => {
-	var add = new Promise((resol, rejec) => {
+	return new Promise((resol, rejec) => {
 		MongoCon.connect("POST", table).then(collection => {
-			collection.updateOne({ _id: data.id }, { $set: { _id: data.id, Title: data.Title, Genres: data.genres, Overview: data.overview, ReleseDate: data.release, addedByUser: data.userId, addedByProfile: data.profileId } }, { upsert: true }, (err, data) => {
+			collection.updateOne({ _id: data.id }, { $set: { _id: data.id, Title: data.Title, Overview: data.overview, ReleaseDate: data.release, addedByUser: data.userId, addedByProfile: data.profileId, src:"" } }, { upsert: true }, (err, data) => {
 				if (err) rejec(err);
 				resol(data);
 			});
 		});
 	});
-	return add;
 };
 mongo.getMovie = (id) => {
-	console.log(id);
+	//console.log(id);
 	return new Promise((resol, reject) => {
 		MongoCon.connect("GET", table).then(collection => {
-			collection.find({ _id:id }, (err, cursor) => {
-				console.log(err);
-				cursor.count().then(data => {
-					console.log(data);
-				});
+			collection.findOne({ _id: parseInt(id) })
+				.then(res => { resol(res); })
+				.catch(err => { reject(err); });
 
-			});
-		}).catch(e => { reject(e); });
+		});
 	});
 };
 

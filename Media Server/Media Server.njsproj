@@ -30,7 +30,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="build\service-worker.js" />
+    <Compile Include="build\static\js\main.09d630df.js" />
     <Compile Include="build\static\js\main.2ddcbd51.js" />
+    <Compile Include="build\static\js\main.3d97d547.js" />
+    <Compile Include="build\static\js\main.60434cfc.js" />
     <Compile Include="build\static\js\main.9f3cb917.js" />
     <Compile Include="Comments.js">
       <SubType>Code</SubType>
@@ -39,9 +42,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ExternalAPI\APIConn.js">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Home.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="HTML\js\HomeFront.js" />
@@ -87,7 +87,10 @@
     <Content Include="build\favicon.ico" />
     <Content Include="build\index.html" />
     <Content Include="build\manifest.json" />
+    <Content Include="build\static\js\main.09d630df.js.map" />
     <Content Include="build\static\js\main.2ddcbd51.js.map" />
+    <Content Include="build\static\js\main.3d97d547.js.map" />
+    <Content Include="build\static\js\main.60434cfc.js.map" />
     <Content Include="build\static\js\main.9f3cb917.js.map" />
     <Content Include="Data\EDr.txt" />
     <Content Include="Data\FDr.txt" />

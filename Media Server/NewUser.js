@@ -13,18 +13,18 @@ app.route("/").get((req, res) => {
 	check('User.Email').isEmail(),
 	check('User.Password').isLength({ min: 7 })
 	], (req, res) => {
-		console.log(req.body);
+		//console.log(req.body);
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
-		return res.status(422).json({ errors: errors.array() });
+		return res.json({ body: errors.array() });
 	}
 	const email = req.body.User.Email;
 	const password = req.body.User.Password;
 	mongo.newLogin(email, password).then(loginres => {
-		console.log(loginres);
+		//console.log(loginres);
 		res.json({ body: loginres });
 	}).catch(err => {
-		console.log(err);
+		//console.log(err);
 		res.json({ body:err});
 	});
 });

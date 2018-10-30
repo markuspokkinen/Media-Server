@@ -49,7 +49,7 @@ export default class AddMovies extends Component {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-				name: this.state.name,
+				name: this.state.name.split(" (")[0],
 				id: this.state.id,
 				release: this.state.release,
 				desc: this.state.desc
@@ -58,6 +58,13 @@ export default class AddMovies extends Component {
 		}).then(res => res.json()).then(response => {
 			if (response.n === 1 && response.ok === 1) {
 				this.props.returndata();
+				this.setState({
+					name: "",
+					id: 0,
+					release: "",
+					desc: "",
+					movielist: []
+				});
 			}
 		});
 	}

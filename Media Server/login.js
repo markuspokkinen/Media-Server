@@ -8,29 +8,29 @@ const { check, validationResult } = require('express-validator/check');
 
 const app = express();
 
-app.post("/",(req, res) => {
+app.post("/", (req, res) => {
 	//console.log(req.body);
 	mongo.Login(req.body.User.Email).then(data => {
-		//console.log(data);
+		console.log(data);
 		if (req.body.User.Password === data.Password) {
 			req.session.userId = data._id;
 			req.session.cookie.userId = data._id;
 			//console.log(req.session.userId);
-			console.log("success");
-			res.json({user: true});
+			//console.log("success");
+			res.json({ user: true });
 		} else {
-			res.json("Email or Password was wrong");
+			res.json({ user: false });
 		}
 
 	}).catch(err => {
-		//console.log(err);
-		res.send(err);
+		console.log(err);
+		res.json({ user: false });
 	});
 });
 
 app.get("/Out", (req, res) => {
 	//console.log("logged out");
 	req.session.destroy();
-	res.json({body: "loged"});
+	res.json({ body: "loged" });
 });
 module.exports = app;
