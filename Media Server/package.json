@@ -1,11 +1,14 @@
 {
-  "name": "media-server",
-  "version": "0.0.0",
-  "description": "Media Server",
-  "main": "server.js",
-  "author": {
-    "name": "marku"
+	"name": "media-server",
+  "version": "0.1.0",
+  "repository": {
+
   },
+	"description": "Media Server",
+	"main": "server.js",
+	"author": {
+		"name": "marku"
+	},
 	"dependencies": {
 		"body-parser": "^1.18.3",
 		"cookie-parser": "^1.4.3",
@@ -17,7 +20,7 @@
 		"request": "^2.88.0"
 	},
 	"scripts": {
-		"start":"node server.js",
+		"start": "node server.js",
 		"start-dev": "nodemon server.js"
 	}
 }
